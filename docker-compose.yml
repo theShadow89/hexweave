@@ -1,0 +1,19 @@
+services:
+  hexweave:
+    build: .
+    image: hexweave:latest
+    container_name: hexweave
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=production
+      # Agent is off by default. Set AGENT_ENABLED=true in your shell (or a
+      # local .env next to this file) to opt in, then supply provider vars.
+      - AGENT_ENABLED=${AGENT_ENABLED:-}
+      - AGENT_PROVIDER=${AGENT_PROVIDER:-}
+      - ANTHROPIC_API_KEY=${ANTHROPIC_API_KEY:-}
+      - ANTHROPIC_MODEL=${ANTHROPIC_MODEL:-}
+      - AGENT_BASE_URL=${AGENT_BASE_URL:-}
+      - AGENT_MODEL=${AGENT_MODEL:-}
+      - AGENT_API_KEY=${AGENT_API_KEY:-}
+    restart: unless-stopped

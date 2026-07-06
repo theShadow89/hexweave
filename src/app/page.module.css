@@ -1,0 +1,271 @@
+/* Full-bleed viewer layout. The 3D canvas occupies the entire viewport;
+   parameter UI is overlaid as floating modals (toolbar trigger on the
+   left, modal panel opens to its right). Bottom-centre action bar holds
+   the Generate / Download buttons. */
+.layout {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  font-family: var(--font-geist-sans), system-ui, sans-serif;
+  /* Dark backstop — only visible during the brief moment before the
+     Canvas mounts. Matches the Viewer's gradient bottom. */
+  background: #0e1014;
+}
+
+.viewer {
+  position: absolute;
+  inset: 0;
+}
+
+/* ── Floating toolbar (LEFT side, vertical icon stack) ── */
+.toolbar {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  z-index: 10;
+  user-select: none;
+}
+
+.toolbarBtn {
+  width: 38px;
+  height: 38px;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(18, 18, 24, 0.85);
+  color: rgba(255, 255, 255, 0.78);
+  border: 1px solid rgba(255, 255, 255, 0.10);
+  cursor: pointer;
+  backdrop-filter: blur(6px);
+  transition: color 120ms, border-color 120ms, background 120ms;
+}
+
+.toolbarBtn:hover {
+  background: rgba(28, 28, 36, 0.92);
+  color: rgba(255, 255, 255, 0.95);
+}
+
+.toolbarBtnActive {
+  color: #ff8a3d;
+  border-color: rgba(255, 138, 61, 0.65);
+}
+
+/* ── Modal panel (floating, opens next to the toolbar) ── */
+.modal {
+  position: absolute;
+  top: 12px;
+  left: 60px;
+  width: 360px;
+  max-height: calc(100vh - 24px);
+  display: flex;
+  flex-direction: column;
+  background: rgba(18, 18, 24, 0.94);
+  border: 1px solid rgba(255, 255, 255, 0.10);
+  color: #e6e6ea;
+  backdrop-filter: blur(8px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.45);
+  z-index: 9;
+}
+
+.modalHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 14px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  flex-shrink: 0;
+}
+
+.modalTitle {
+  font-size: 13px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #e6e6ea;
+  margin: 0;
+}
+
+.modalClose {
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: none;
+  color: rgba(255, 255, 255, 0.55);
+  cursor: pointer;
+  font-size: 18px;
+  line-height: 1;
+}
+
+.modalClose:hover {
+  color: rgba(255, 255, 255, 0.95);
+}
+
+.modalBody {
+  padding: 14px 16px;
+  overflow-y: auto;
+  flex: 1;
+  min-height: 0;
+}
+
+/* ── Field / group styling (re-used inside modals) ── */
+.title {
+  margin: 0 0 4px;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.subtitle {
+  margin: 0 0 20px;
+  font-size: 12px;
+  color: #8a8a96;
+}
+
+.group {
+  margin-bottom: 18px;
+}
+
+.group:last-child {
+  margin-bottom: 0;
+}
+
+.groupTitle {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #8a8a96;
+  margin-bottom: 8px;
+}
+
+.field {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 8px;
+  gap: 8px;
+}
+
+.field label {
+  font-size: 13px;
+}
+
+.field input,
+.field select {
+  width: 130px;
+  padding: 6px 8px;
+  background: rgba(8, 8, 12, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: #e6e6ea;
+  font-size: 13px;
+}
+
+.hint {
+  font-size: 11px;
+  line-height: 1.5;
+  color: #8a8a96;
+  margin-top: 8px;
+}
+
+/* ── Stats block (used in Stats modal) ── */
+.stats {
+  font-size: 12px;
+  line-height: 1.7;
+  color: #b8b8c2;
+  background: rgba(8, 8, 12, 0.55);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 12px;
+}
+
+.stats b {
+  color: #e6e6ea;
+}
+
+.warn {
+  color: #f0a04b;
+  margin-top: 8px;
+}
+
+.ok {
+  color: #5fd08a;
+  margin-top: 8px;
+}
+
+/* ── Bottom action bar (Generate + Downloads + status) ── */
+.actionBar {
+  position: absolute;
+  left: 50%;
+  bottom: 16px;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px;
+  background: rgba(18, 18, 24, 0.92);
+  border: 1px solid rgba(255, 255, 255, 0.10);
+  backdrop-filter: blur(8px);
+  z-index: 10;
+}
+
+.button {
+  padding: 8px 16px;
+  background: #4b6bfb;
+  border: none;
+  color: white;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 120ms;
+}
+
+.button:hover {
+  background: #3a59e8;
+}
+
+.button:disabled {
+  cursor: not-allowed;
+}
+
+.buttonSecondary {
+  padding: 8px 16px;
+  background: transparent;
+  border: 1px solid rgba(75, 107, 251, 0.7);
+  color: #b8c1ff;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 120ms;
+}
+
+.buttonSecondary:hover {
+  background: rgba(75, 107, 251, 0.12);
+}
+
+.actionStatus {
+  font-size: 12px;
+  color: #8a8a96;
+  padding: 0 10px;
+  max-width: 260px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* ── App title (corner of viewer) ── */
+.appTitle {
+  position: absolute;
+  top: 16px;
+  left: 60px;
+  font-size: 13px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.55);
+  letter-spacing: 0.05em;
+  pointer-events: none;
+  z-index: 5;
+}

@@ -1,0 +1,33 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - run: npm ci
+
+      - name: TypeScript check
+        run: npm run typecheck
+
+      # Integration test suite: panel geometry, subdivision, insert placement,
+      # export pipeline (3MF), arbitrary shapes, agent schemas + prompts.
+      # tests/original-match.test.ts is skipped in CI because it depends on the
+      # original RostaP STL files (CC BY-NC 4.0, not redistributed here) —
+      # maintainers run it locally with ORIGINAL_STL_DIR set before releases.
+      - name: Tests (integration)
+        run: npm test
+
+      - name: Production build
+        run: npm run build

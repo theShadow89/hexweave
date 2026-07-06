@@ -1,0 +1,155 @@
+.group {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.groupTitle {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #8a8a96;
+  margin-bottom: 8px;
+}
+
+.root {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.tabs {
+  display: flex;
+  gap: 4px;
+}
+
+.tab {
+  flex: 1;
+  padding: 5px 4px;
+  font-size: 12px;
+  font-weight: 500;
+  background: #0e0e11;
+  color: #8a8a96;
+  border: 1px solid #26262e;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.tab:hover {
+  color: #e6e6ea;
+}
+
+.tabActive {
+  background: #1f2540;
+  color: #b8c1ff;
+  border-color: #4b6bfb;
+}
+
+.hint {
+  font-size: 11px;
+  color: #8a8a96;
+  margin: 0 0 4px;
+}
+
+.history {
+  max-height: 220px;
+  overflow-y: auto;
+  border: 1px solid #26262e;
+  border-radius: 6px;
+  background: #0e0e11;
+  padding: 8px;
+  font-size: 12px;
+}
+
+.empty {
+  color: #5a5a66;
+  font-size: 11px;
+  text-align: center;
+  margin: 6px 0;
+}
+
+.turn {
+  margin-bottom: 8px;
+  padding: 6px 8px;
+  border-radius: 6px;
+  line-height: 1.4;
+}
+
+.turn:last-child {
+  margin-bottom: 0;
+}
+
+.user {
+  background: #1f2540;
+}
+
+.assistant {
+  background: #1a1a22;
+}
+
+.role {
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #8a8a96;
+  margin-bottom: 4px;
+}
+
+.text {
+  color: #e6e6ea;
+  white-space: pre-wrap;
+}
+
+.toolList {
+  margin: 6px 0 0;
+  padding-left: 16px;
+  color: #b8b8c2;
+  font-size: 11px;
+}
+
+.toolItem {
+  margin-bottom: 2px;
+}
+
+.toolItem :global(code) {
+  background: #0e0e11;
+  padding: 1px 4px;
+  border-radius: 3px;
+  color: #b8c1ff;
+}
+
+.error {
+  color: #f0a04b;
+  font-size: 11px;
+  margin-top: 4px;
+}
+
+.input {
+  padding: 8px;
+  background: #0e0e11;
+  border: 1px solid #2e2e38;
+  border-radius: 6px;
+  color: #e6e6ea;
+  font-family: inherit;
+  font-size: 12px;
+  resize: vertical;
+}
+
+.send {
+  padding: 8px;
+  background: #4b6bfb;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.send:hover:not(:disabled) {
+  background: #3a59e8;
+}
+
+.send:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}

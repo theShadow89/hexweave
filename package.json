@@ -1,0 +1,70 @@
+{
+  "name": "hexweave",
+  "version": "0.1.0",
+  "description": "Hexweave: browser-based parametric generator for printable Honeycomb Storage Wall panels. Arbitrary shapes, automatic subdivision into print-bed-sized tiles with multi-cell clip-insert connectors, STL/3MF export, optional natural-language agent.",
+  "license": "MIT",
+  "author": "Stefano Castoldi",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/scastoldi/hexweave.git"
+  },
+  "bugs": {
+    "url": "https://github.com/scastoldi/hexweave/issues"
+  },
+  "homepage": "https://github.com/scastoldi/hexweave#readme",
+  "engines": {
+    "node": ">=20.0.0"
+  },
+  "keywords": [
+    "honeycomb",
+    "storage-wall",
+    "hsw",
+    "3d-printing",
+    "stl",
+    "3mf",
+    "parametric",
+    "nextjs",
+    "three.js",
+    "r3f",
+    "react-three-fiber",
+    "material-profile",
+    "petg",
+    "pla"
+  ],
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:coverage": "vitest run --coverage"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.100.1",
+    "@react-three/drei": "^10.7.7",
+    "@react-three/fiber": "^9.6.1",
+    "@react-three/postprocessing": "^3.0.4",
+    "fflate": "^0.8.3",
+    "maxrects-packer": "^2.7.3",
+    "next": "16.2.6",
+    "openscad-wasm": "^0.0.4",
+    "polygon-clipping": "^0.15.7",
+    "postprocessing": "^6.39.1",
+    "react": "19.2.4",
+    "react-dom": "19.2.4",
+    "svgson": "^5.3.1",
+    "three": "^0.184.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "@types/three": "^0.184.1",
+    "@vitest/coverage-v8": "^4.1.9",
+    "tsx": "^4.22.3",
+    "typescript": "^5",
+    "vite-tsconfig-paths": "^6.1.1",
+    "vitest": "^4.1.9"
+  }
+}
