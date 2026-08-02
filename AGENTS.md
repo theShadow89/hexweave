@@ -41,8 +41,14 @@ Applied ONLY to the panel cell hole (front, rear, pocket). Insert geometry is ne
 
 ### Agent surface
 
-- `src/lib/agent/tools.ts` — canonical tool catalog.
+Fully client-side (BYOK). No server routes, no env config: the user configures provider/model/key in-app and the LLM call runs directly from the browser/renderer.
+
+- `src/lib/agent/tools.ts` — canonical tool catalog (typed by `AgentTool` in `types.ts`, not an SDK).
 - `src/lib/agent/prompts.ts` — SHARED_RULES + per-mode system prompts.
-- `src/app/page.tsx` — `agentContext` (state snapshot injected as system context) and `handleAgentTool` (dispatch). Every tool needs a matching `case` in `handleAgentTool`.
-- Modes: `chat-config`, `optimizer`, `end-to-end`.
-- Off by default. `AGENT_ENABLED=true` opts in; providers: `anthropic` or `openai_compatible`.
+- `src/lib/agent/runAgent.ts` — client-side provider call (Anthropic via direct-browser CORS, or OpenAI-compatible), normalised to `ContentBlock[]`.
+- `src/lib/agent/config.ts` — non-secret config types + defaults; `configStore.ts` persists them in localStorage.
+- `src/lib/agent/keystore.ts` — local secure key storage: OS keychain via `window.hexweave.keystore` (Electron `safeStorage`) on desktop, passphrase-encrypted (AES-GCM/PBKDF2) in localStorage on web.
+- `src/components/Agent/AgentSettings.tsx` — in-app config UI; `AgentPanel.tsx` — chat/dispatch.
+- `src/app/page.tsx` — `agentContext` (state snapshot) and `handleAgentTool` (dispatch). Every tool needs a matching `case` in `handleAgentTool`.
+- Modes: `chat-config`, `optimizer`, `end-to-end`. Providers: `anthropic` or `openai_compatible`.
+- Available when a provider/model is configured and a key is stored (and unlocked on web). Otherwise the panel shows a setup hint.
