@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "description": "Hexweave: browser-based parametric generator for printable Honeycomb Storage Wall panels. Arbitrary shapes, automatic subdivision into print-bed-sized tiles with multi-cell clip-insert connectors, STL/3MF export, optional natural-language agent.",
   "license": "MIT",
+  "main": "electron/main.js",
   "author": "Stefano Castoldi",
   "repository": {
     "type": "git",
@@ -38,7 +39,11 @@
     "typecheck": "tsc --noEmit",
     "test": "vitest run",
     "test:watch": "vitest",
-    "test:coverage": "vitest run --coverage"
+    "test:coverage": "vitest run --coverage",
+    "electron:dev": "concurrently -k -n next,electron \"next dev\" \"electron electron/main.js\"",
+    "dist:mac": "next build && electron-builder --mac",
+    "dist:win": "next build && electron-builder --win",
+    "dist:linux": "next build && electron-builder --linux"
   },
   "dependencies": {
     "@react-three/drei": "^10.7.7",
@@ -61,6 +66,9 @@
     "@types/react-dom": "^19",
     "@types/three": "^0.184.1",
     "@vitest/coverage-v8": "^4.1.9",
+    "concurrently": "^9.2.4",
+    "electron": "^34.5.8",
+    "electron-builder": "^25.1.8",
     "tsx": "^4.22.3",
     "typescript": "^5",
     "vite-tsconfig-paths": "^6.1.1",
