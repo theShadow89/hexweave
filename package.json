@@ -61,6 +61,8 @@
     "three": "^0.184.0"
   },
   "devDependencies": {
+    "@semantic-release/changelog": "^6.0.3",
+    "@semantic-release/git": "^10.0.1",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
@@ -69,6 +71,7 @@
     "concurrently": "^9.2.4",
     "electron": "^34.5.8",
     "electron-builder": "^25.1.8",
+    "semantic-release": "^24.2.9",
     "tsx": "^4.22.3",
     "typescript": "^5",
     "vite-tsconfig-paths": "^6.1.1",
