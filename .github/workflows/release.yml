@@ -1,0 +1,46 @@
+name: Release
+
+# git-flow: releases happen when develop is merged into main. semantic-release
+# reads the Conventional Commits since the last tag, bumps the version, updates
+# package.json + CHANGELOG.md, tags main, and publishes a GitHub Release.
+#
+# IMPORTANT: merge the develop -> main release PR as a MERGE COMMIT (not squash),
+# so the feat/fix commits reach main for the analyzer to see.
+on:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: write # create tags, releases, and push the version-bump commit
+  issues: write # comment on/close released issues
+  pull-requests: write
+
+concurrency:
+  group: release
+  cancel-in-progress: false
+
+jobs:
+  release:
+    name: semantic-release
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 # full history + tags for version calculation
+          persist-credentials: true
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: npx semantic-release
