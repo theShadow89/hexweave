@@ -1,12 +1,12 @@
-import type Anthropic from "@anthropic-ai/sdk";
+import type { AgentTool } from "./types";
 
 /**
- * Tool catalog the HSW agent can call. Execution is client-side: the API route
- * forwards Claude's tool_use blocks unchanged and the page state setters run
+ * Tool catalog the HSW agent can call. Execution is client-side: `runAgent`
+ * forwards the model's tool_use blocks unchanged and the page state setters run
  * them in the browser. Keep descriptions explicit so the model picks the right
  * tool from a short user brief.
  */
-export const AGENT_TOOLS: Anthropic.Tool[] = [
+export const AGENT_TOOLS: AgentTool[] = [
   {
     name: "set_rectangle_shape",
     description: "Set the wall shape to a rectangle with the given width and height in millimetres. Use for plain rectangular walls.",

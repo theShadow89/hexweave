@@ -1,0 +1,101 @@
+.root {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 12px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid #26262e;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.label {
+  font-size: 11px;
+  color: #8a8a96;
+}
+
+.input,
+.select {
+  padding: 7px 8px;
+  background: #0e0e11;
+  border: 1px solid #2e2e38;
+  border-radius: 6px;
+  color: #e6e6ea;
+  font-family: inherit;
+  font-size: 12px;
+}
+
+.input:focus,
+.select:focus {
+  outline: none;
+  border-color: #4b6bfb;
+}
+
+.primary {
+  padding: 8px;
+  background: #4b6bfb;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.primary:hover:not(:disabled) {
+  background: #3a59e8;
+}
+
+.primary:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.note {
+  font-size: 11px;
+  color: #8a8a96;
+  margin: 0;
+  line-height: 1.4;
+}
+
+.dangerRow {
+  display: flex;
+  gap: 6px;
+}
+
+.ghost {
+  flex: 1;
+  padding: 6px;
+  background: transparent;
+  color: #8a8a96;
+  border: 1px solid #26262e;
+  border-radius: 6px;
+  font-size: 11px;
+  cursor: pointer;
+}
+
+.ghost:hover:not(:disabled) {
+  color: #f0a04b;
+  border-color: #f0a04b;
+}
+
+.ghost:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.ok {
+  font-size: 11px;
+  color: #6bd08a;
+  margin: 0;
+}
+
+.err {
+  font-size: 11px;
+  color: #f0a04b;
+  margin: 0;
+}

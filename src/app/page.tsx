@@ -14,6 +14,7 @@ import {
   type ShapeState,
 } from "@/components/ShapeInput/ShapeInput";
 import { AgentPanel } from "@/components/Agent/AgentPanel";
+import { AgentSettings } from "@/components/Agent/AgentSettings";
 import {
   CUSTOM_PLATE_ID,
   DEFAULT_BORDER,
@@ -1514,6 +1515,7 @@ export default function Home() {
         )}
         {openModal === "agent" && (
           <Modal title="Agent" onClose={() => setOpenModal(null)}>
+            <AgentSettings />
             <AgentPanel context={agentContext} onToolCall={handleAgentTool} />
           </Modal>
         )}
