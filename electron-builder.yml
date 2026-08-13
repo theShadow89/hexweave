@@ -1,0 +1,35 @@
+appId: tech.intella.hexweave
+productName: Hexweave
+directories:
+  output: dist-electron
+  buildResources: build
+# The asar holds only the tiny main/preload glue. The app's dependency tree is
+# NOT packed: the renderer loads everything from the local HTTP server.
+asar: true
+files:
+  - electron/**/*
+  - package.json
+  - "!**/node_modules/**"
+# The Next standalone bundle ships as plain (non-asar) files next to server.js
+# so the spawned Node child requires them by path. Next does not copy public or
+# .next/static into standalone, so map them alongside.
+extraResources:
+  - from: .next/standalone
+    to: standalone
+  - from: .next/static
+    to: standalone/.next/static
+  - from: public
+    to: standalone/public
+mac:
+  category: public.app-category.graphics-design
+  target:
+    - target: dmg
+      arch: [arm64, x64]
+win:
+  target:
+    - target: nsis
+      arch: [x64]
+linux:
+  category: Graphics
+  target:
+    - AppImage

@@ -3,15 +3,16 @@
   "version": "0.1.0",
   "description": "Hexweave: browser-based parametric generator for printable Honeycomb Storage Wall panels. Arbitrary shapes, automatic subdivision into print-bed-sized tiles with multi-cell clip-insert connectors, STL/3MF export, optional natural-language agent.",
   "license": "MIT",
+  "main": "electron/main.js",
   "author": "Stefano Castoldi",
   "repository": {
     "type": "git",
-    "url": "https://github.com/scastoldi/hexweave.git"
+    "url": "https://github.com/theShadow89/hexweave.git"
   },
   "bugs": {
-    "url": "https://github.com/scastoldi/hexweave/issues"
+    "url": "https://github.com/theShadow89/hexweave/issues"
   },
-  "homepage": "https://github.com/scastoldi/hexweave#readme",
+  "homepage": "https://github.com/theShadow89/hexweave#readme",
   "engines": {
     "node": ">=20.0.0"
   },
@@ -38,10 +39,13 @@
     "typecheck": "tsc --noEmit",
     "test": "vitest run",
     "test:watch": "vitest",
-    "test:coverage": "vitest run --coverage"
+    "test:coverage": "vitest run --coverage",
+    "electron:dev": "concurrently -k -n next,electron \"next dev\" \"electron electron/main.js\"",
+    "dist:mac": "next build && electron-builder --mac",
+    "dist:win": "next build && electron-builder --win",
+    "dist:linux": "next build && electron-builder --linux"
   },
   "dependencies": {
-    "@anthropic-ai/sdk": "^0.100.1",
     "@react-three/drei": "^10.7.7",
     "@react-three/fiber": "^9.6.1",
     "@react-three/postprocessing": "^3.0.4",
@@ -57,11 +61,17 @@
     "three": "^0.184.0"
   },
   "devDependencies": {
+    "@semantic-release/changelog": "^6.0.3",
+    "@semantic-release/git": "^10.0.1",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "@types/three": "^0.184.1",
     "@vitest/coverage-v8": "^4.1.9",
+    "concurrently": "^9.2.4",
+    "electron": "^34.5.8",
+    "electron-builder": "^25.1.8",
+    "semantic-release": "^24.2.9",
     "tsx": "^4.22.3",
     "typescript": "^5",
     "vite-tsconfig-paths": "^6.1.1",
