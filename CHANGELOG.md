@@ -1,3 +1,13 @@
+# [0.2.0](https://github.com/theShadow89/hexweave/compare/v0.1.0...v0.2.0) (2026-08-13)
+
+
+### Features
+
+* **agent:** in-app BYOK configuration, client-side ([e6a92c8](https://github.com/theShadow89/hexweave/commit/e6a92c89df5988ada4096d9b4980bb0e8d8bc606))
+* **agent:** in-app BYOK configuration, fully client-side ([9b7b240](https://github.com/theShadow89/hexweave/commit/9b7b240a73367c90d927de702fb1198390ecec06)), closes [#1](https://github.com/theShadow89/hexweave/issues/1)
+* **desktop:** package the app with Electron ([c39392d](https://github.com/theShadow89/hexweave/commit/c39392dc9fb88537597898d5618ada50c5cd58ce))
+* **desktop:** package the app with Electron ([3f1774c](https://github.com/theShadow89/hexweave/commit/3f1774c6706a6aabe6f049f3a7eb8237a59f3510)), closes [#2](https://github.com/theShadow89/hexweave/issues/2)
+
 # Changelog
 
 All notable changes to Hexweave are documented in this file.

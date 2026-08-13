@@ -1,6 +1,6 @@
 {
   "name": "hexweave",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Hexweave: browser-based parametric generator for printable Honeycomb Storage Wall panels. Arbitrary shapes, automatic subdivision into print-bed-sized tiles with multi-cell clip-insert connectors, STL/3MF export, optional natural-language agent.",
   "license": "MIT",
   "main": "electron/main.js",
