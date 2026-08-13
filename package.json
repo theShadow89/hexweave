@@ -7,12 +7,12 @@
   "author": "Stefano Castoldi",
   "repository": {
     "type": "git",
-    "url": "https://github.com/scastoldi/hexweave.git"
+    "url": "https://github.com/theShadow89/hexweave.git"
   },
   "bugs": {
-    "url": "https://github.com/scastoldi/hexweave/issues"
+    "url": "https://github.com/theShadow89/hexweave/issues"
   },
-  "homepage": "https://github.com/scastoldi/hexweave#readme",
+  "homepage": "https://github.com/theShadow89/hexweave#readme",
   "engines": {
     "node": ">=20.0.0"
   },
